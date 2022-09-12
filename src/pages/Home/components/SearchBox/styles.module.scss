@@ -1,0 +1,15 @@
+.searchBox {
+  display: flex;
+  flex-direction: column;
+  .inputSection {
+    display: flex;
+    align-items: center;
+    margin-top: 8px;
+    .input {
+      min-width: 646px;
+    }
+    .searchButton {
+      margin-left: 10px;
+    }
+  }
+}

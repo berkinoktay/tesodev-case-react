@@ -1,0 +1,23 @@
+@import 'styles/_colors.scss';
+.homeLogoSection {
+  display: flex;
+
+  justify-content: center;
+
+  .logo {
+    position: relative;
+    width: 278px;
+    height: 115px;
+  }
+  span {
+    margin-left: 30px;
+    width: 100%;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 16px;
+    color: $secondary-color;
+    margin-top: 10px;
+    text-align: end;
+    display: block;
+  }
+}

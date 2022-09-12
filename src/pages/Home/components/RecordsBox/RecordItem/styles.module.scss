@@ -1,0 +1,25 @@
+@import 'styles/_colors.scss';
+
+.recordItem {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  .details {
+    display: flex;
+    flex-direction: column;
+    font-family: 'Inter', sans-serif !important;
+    gap: 4px;
+    .company {
+      font-weight: 400;
+      font-size: 16px;
+      line-height: 20px;
+      color: $text-color;
+    }
+    .location {
+      font-weight: 400;
+      font-size: 14px;
+      line-height: 16px;
+      color: $text-light-color;
+    }
+  }
+}

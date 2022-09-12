@@ -1,0 +1,18 @@
+@import 'styles/_colors.scss';
+
+.button {
+  background-color: $primary-color;
+  padding: 0 2.5rem;
+  height: 46px;
+  border: none;
+  color: #fff;
+  border-radius: 12px;
+  font-weight: 700;
+  font-size: 1.125rem;
+  cursor: pointer;
+  transition: all 300ms ease-in-out;
+  margin-left: auto;
+  &:hover {
+    background-color: $hover-color;
+  }
+}
