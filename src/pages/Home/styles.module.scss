@@ -1,9 +1,5 @@
 @import 'styles/_colors.scss';
-.searchSection {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+.home {
   h2 {
     font-weight: 700;
     font-size: 32px;
@@ -11,15 +7,69 @@
     font-family: 'Inter', sans-serif;
     color: $text-color;
   }
-  .search {
+  .searchSection {
     display: flex;
-    justify-content: center;
     flex-direction: column;
-    .findBox {
-      padding-left: 30px;
+    justify-content: center;
+    align-items: center;
+
+    .search {
       display: flex;
-      flex-direction: column;
       justify-content: center;
+      flex-direction: column;
+      .findBox {
+        padding-left: 30px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+      }
+    }
+  }
+
+  .sliderSection {
+    margin-top: 90px;
+    padding: 0 90px;
+    .carousel {
+      margin-top: 50px;
+      .carouselItem > div {
+        background-color: red;
+      }
+    }
+  }
+  .contactSection {
+    display: block;
+    width: 100%;
+    height: auto;
+    background-color: rgba(41, 78, 152, 0.72);
+    padding: 28px 0;
+    margin-top: 58px;
+    .contactWrapper {
+      display: flex;
+      align-items: center;
+      gap: 25px;
+
+      img {
+        height: auto;
+        width: 217px;
+        object-fit: cover;
+      }
+      .infoBox {
+        > * {
+          font-weight: 400;
+          font-size: 18px;
+          line-height: 21px;
+          color: #ffffff;
+        }
+        h2,
+        .email {
+          font-weight: 700;
+        }
+        .email {
+          margin-top: 60px;
+        }
+      }
+      .mapBox {
+      }
     }
   }
 }

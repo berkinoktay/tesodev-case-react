@@ -1,0 +1,17 @@
+@import 'styles/_colors.scss';
+.noResults {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 2rem;
+  color: $primary-color;
+  .sadFace {
+    width: 80px;
+    height: 80px;
+    color: $primary-color;
+  }
+  div {
+    font-size: 1.2rem;
+  }
+}

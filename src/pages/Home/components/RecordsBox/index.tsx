@@ -2,6 +2,7 @@ import { RootState } from 'redux/reducers';
 import { useSelector } from 'react-redux';
 import RecordItem from './RecordItem';
 import styles from './styles.module.scss';
+import NotResult from 'components/notResult';
 const RecordsBox = () => {
     const records = useSelector((state: RootState) => state.records.records);
     const search = useSelector((state: RootState) => state.records.search);
@@ -14,6 +15,7 @@ const RecordsBox = () => {
 
             </ul>
             {filteredRecords.length > 3 && <a href="/list" className={styles.showMore}>Show more..</a>}
+            {filteredRecords.length === 0 && <NotResult />}
 
 
         </div>
