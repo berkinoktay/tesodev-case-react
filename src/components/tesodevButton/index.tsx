@@ -5,10 +5,11 @@ interface TesodevButtonProps {
   title: string
   onClick?: () => void
   className?: string
+  type?: 'button' | 'submit'
 }
-const TesodevButton: FC<React.PropsWithChildren<TesodevButtonProps>> = ({ title, onClick, className }) => {
+const TesodevButton: FC<React.PropsWithChildren<TesodevButtonProps>> = ({ title, onClick, className, type }) => {
   return (
-    <button className={`${styles.button} ${className}`} onClick={onClick}>
+    <button type={!!type ? type : 'button'} className={`${styles.button} ${className}`} onClick={onClick}>
       {title}
     </button>
   )

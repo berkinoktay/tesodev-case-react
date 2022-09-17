@@ -1,0 +1,11 @@
+.mainSection {
+  display: flex;
+  gap: 18px;
+  .listSide {
+    flex: 1;
+    margin-left: 150px;
+  }
+  .filterSide {
+    min-width: 300px;
+  }
+}
