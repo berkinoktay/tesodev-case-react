@@ -1,0 +1,53 @@
+@import 'styles/_colors.scss';
+.toastContainer {
+  position: relative;
+  display: flex;
+  background: #c4c4c4;
+  border-radius: 8px;
+  padding: 18px 22px;
+  .errors {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    max-width: 240px;
+
+    .title {
+      font-family: 'Inter';
+      font-weight: 700;
+      font-size: 0.875rem;
+      line-height: 2.25;
+      color: $text-color;
+    }
+    .message {
+      font-family: 'Inter';
+      font-weight: 400;
+      font-size: 0.75rem;
+      line-height: 1.5rem;
+    }
+  }
+  .tagContainer {
+    padding-top: 25px;
+    display: flex;
+    flex-direction: column;
+    .tag {
+      display: grid;
+      place-items: center;
+      background: #ff4e78;
+      border-radius: 48px;
+      padding: 0.5rem 1rem;
+      font-family: 'Inter';
+      font-weight: 500;
+      font-size: 1rem;
+      line-height: 1rem;
+      color: #fff;
+    }
+  }
+  .closeIcon {
+    width: 20px;
+    aspect-ratio: 1;
+    position: absolute;
+    top: 11px;
+    right: 14px;
+    cursor: pointer;
+  }
+}

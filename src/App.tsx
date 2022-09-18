@@ -11,23 +11,28 @@ import { Route, Routes } from 'react-router-dom';
 import { setRecords } from 'redux/slices/records';
 function App() {
   const dispatch = useDispatch()
-
+  const recordsData = localStorage.getItem('recordsData');
   useEffect(() => {
 
-    const convertedData: IRecords[] = []
-    let obj: any = {}
+    if (!(!!recordsData)) {
+      console.log("girdi")
+      const convertedData: IRecords[] = []
+      let obj: any = {}
 
-    db.data.forEach((element: string[]) => {
-      element.forEach((data: string, index: number) => {
-        const key = db.cols[index].toLocaleLowerCase().split(' ').join('_')
-        obj[key] = data
+      db.data.forEach((element: string[]) => {
+        element.forEach((data: string, index: number) => {
+          const key = db.cols[index].toLocaleLowerCase().split(' ').join('_')
+          obj[key] = data
+        })
+        convertedData.push({ ...obj })
       })
-      convertedData.push({ ...obj })
-    })
-    dispatch(setRecords(convertedData))
-    localStorage.setItem('recordsData', JSON.stringify(convertedData))
+      dispatch(setRecords(convertedData))
+      localStorage.setItem('recordsData', JSON.stringify(convertedData))
+    } else {
+      dispatch(setRecords(JSON.parse(recordsData)))
+    }
 
-  }, [])
+  }, [recordsData, dispatch])
   return (
     <Layout>
       <Routes>

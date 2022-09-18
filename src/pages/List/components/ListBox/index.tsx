@@ -1,8 +1,8 @@
 import locationIcon from 'assets/svg/location.svg';
 import NotResult from 'components/notResult';
+import Pagination from 'components/pagination';
 import { IRecords } from 'interfaces/records';
-import { ISortItem } from 'interfaces/sort';
-import { useEffect, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { useSearchParams } from 'react-router-dom';
 import { RootState } from 'redux/reducers';
@@ -10,16 +10,24 @@ import styles from './styles.module.scss';
 
 
 const ListBox: React.FC = () => {
-
     const records = useSelector((state: RootState) => state.records.records);
     const [searchParams] = useSearchParams();
-    const [filteredRecords, setFilteredRecords] = useState<IRecords[]>(records);
-    const search = searchParams.get('search');
-    const sort = searchParams.get('sort');
-    console.log(sort);
+    const [recordsPerPage] = useState(6);
 
     useEffect(() => {
-        const data = records.filter(
+        console.log("records", records)
+
+    }, [records])
+    const search = searchParams.get('search');
+    const sort = searchParams.get('sort');
+    const currentPage = Number(searchParams.get('page')) || 1
+
+    const firstPageIndex = (currentPage - 1) * recordsPerPage;
+    const lastPageIndex = firstPageIndex + recordsPerPage;
+
+
+    const filteredRecords = useMemo(() => {
+        return records.filter(
             (record) =>
                 record.name_surname
                     .toLocaleLowerCase()
@@ -37,52 +45,51 @@ const ListBox: React.FC = () => {
                 return b.name_surname.localeCompare(a.name_surname);
             }
             else if (sort === 'ascYear') {
-                console.log("asc girdi")
                 return new Date(dateA).getTime() - new Date(dateB).getTime();
             }
             else if (sort === 'descYear') {
-                console.log("desc girdi")
                 return new Date(dateB).getTime() - new Date(dateA).getTime();
             } else {
                 return 0;
 
             }
         })
-        setFilteredRecords([...data]);
-    }, [search, sort])
-
-
+    }, [records, search, sort, currentPage]);
     return (
         <>
             {filteredRecords.length === 0 ? (
                 <NotResult />
             ) : (
-                <ul className={styles.listBox}>
-                    {filteredRecords.map((record: IRecords, index: number) => (
-                        <li key={index}>
-                            <div>
-                                <div className={styles.leftPart}>
-                                    <img
-                                        src={locationIcon}
-                                        width={24}
-                                        height={24}
-                                        alt="Location Icon"
-                                    />
-                                    <div className={styles.detailsBox}>
-                                        <div className={styles.company}>{record.company}</div>
-                                        <div className={styles.location}>
-                                            {record.city}, {record.country}
+                <>
+                    <ul className={styles.listBox}>
+                        {filteredRecords.slice(firstPageIndex, lastPageIndex).map((record: IRecords, index: number) => (
+                            <li key={index}>
+                                <div>
+                                    <div className={styles.leftPart}>
+                                        <img
+                                            src={locationIcon}
+                                            width={24}
+                                            height={24}
+                                            alt="Location Icon"
+                                        />
+                                        <div className={styles.detailsBox}>
+                                            <div className={styles.company}>{record.company}</div>
+                                            <div className={styles.location}>
+                                                {record.city}, {record.country}
+                                            </div>
                                         </div>
                                     </div>
+                                    <div className={styles.rightPart}>
+                                        <div className={styles.name}>{record.name_surname}</div>
+                                        <div className={styles.date}>{record.date}</div>
+                                    </div>
                                 </div>
-                                <div className={styles.rightPart}>
-                                    <div className={styles.name}>{record.name_surname}</div>
-                                    <div className={styles.date}>{record.date}</div>
-                                </div>
-                            </div>
-                        </li>
-                    ))}
-                </ul>
+                            </li>
+                        ))}
+                    </ul>
+
+                    <Pagination currentPage={currentPage} itemsPerPage={recordsPerPage} totalItems={filteredRecords.length} />
+                </>
             )}
         </>
     );

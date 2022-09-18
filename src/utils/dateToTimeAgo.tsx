@@ -26,7 +26,4 @@ export function dateToTimeAgo(date: Date): string {
                     : day >= 1
                         ? f(sec, "s")
                         : "";
-
-
-    throw new Error("Date To time ago not implmented");
 }

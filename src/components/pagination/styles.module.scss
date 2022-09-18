@@ -1,0 +1,57 @@
+@import 'styles/_colors.scss';
+.paginationSection {
+  margin: 50px auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  .navigationButton {
+    background: #ffffff;
+    border: 1px solid $secondary-color;
+    border-radius: 4px;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 16px;
+    color: $secondary-color;
+    width: 85px;
+    padding: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 300ms ease-in-out;
+    &:hover {
+      background: $primary-color;
+      color: #fff;
+    }
+    &:disabled {
+      cursor: not-allowed;
+    }
+  }
+  .pages {
+    display: flex;
+    align-items: center;
+    list-style-type: none;
+    gap: 12px;
+    .pageNumber {
+      background: #ffffff;
+      border: 1px solid #484848;
+      border-radius: 4px;
+      width: 24px;
+      aspect-ratio: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: all 150ms ease-in;
+      &:hover {
+        background: rgba($primary-color, 0.8);
+        color: #fff;
+      }
+      &.active {
+        background: $primary-color;
+        color: #fff;
+      }
+    }
+  }
+}

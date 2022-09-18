@@ -6,17 +6,13 @@ import { IRecords } from 'interfaces/records';
 interface IRecordsSlice {
   records: IRecords[];
   search: string;
-  status: 'loading' | 'succeeded' | 'failed' | 'idle';
 }
 
 const initialState: IRecordsSlice = {
-  records:
-    typeof window !== 'undefined' &&
-    (!!localStorage.getItem('recordsData')
-      ? JSON.parse(localStorage.getItem('recordsData') as string)
-      : []),
+  records: !!localStorage.getItem('recordsData')
+    ? JSON.parse(localStorage.getItem('recordsData') as string)
+    : [],
   search: '',
-  status: 'idle',
 };
 
 const recordsSlice = createSlice({
@@ -31,14 +27,6 @@ const recordsSlice = createSlice({
     },
   },
 });
-
-// export const fetchRecords = createAsyncThunk(
-//   'fetchRecords',
-//   async () => {
-//     const res = await axios.get('/api/cities');
-//     return res.data.data;
-//   }
-// );
 
 export const { setRecords, setSearch } = recordsSlice.actions;
 

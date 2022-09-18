@@ -12,7 +12,9 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-
+    @media screen and (max-width: 992px) {
+      align-items: unset;
+    }
     .search {
       display: flex;
       justify-content: center;
@@ -22,6 +24,9 @@
         display: flex;
         flex-direction: column;
         justify-content: center;
+        @media screen and (max-width: 576px) {
+          padding: 0;
+        }
       }
     }
   }
@@ -29,6 +34,9 @@
   .sliderSection {
     margin-top: 90px;
     padding: 0 90px;
+    @media screen and (max-width: 992px) {
+      padding: 0;
+    }
     .carousel {
       margin-top: 50px;
       .carouselItem > div {
@@ -45,30 +53,49 @@
     margin-top: 58px;
     .contactWrapper {
       display: flex;
-      align-items: center;
       gap: 25px;
+      @media screen and (max-width: 992px) {
+        flex-direction: column;
+      }
+      .leftSection {
+        display: flex;
+        align-items: center;
+        gap: 25px;
+        @media screen and (max-width: 992px) {
+          order: 2;
+        }
+        img {
+          height: auto;
+          width: 217px;
+          object-fit: cover;
+          @media screen and (max-width: 576px) {
+            display: none;
+          }
+        }
+        .infoBox {
+          > * {
+            font-weight: 400;
+            font-size: 18px;
+            line-height: 21px;
+            color: #ffffff;
+          }
+          h2,
+          .email {
+            font-weight: 700;
+          }
+          .email {
+            margin-top: 60px;
+          }
+        }
+      }
 
-      img {
-        height: auto;
-        width: 217px;
-        object-fit: cover;
-      }
-      .infoBox {
-        > * {
-          font-weight: 400;
-          font-size: 18px;
-          line-height: 21px;
-          color: #ffffff;
+      @media screen and (max-width: 992px) {
+        .mapBox {
+          order: 1;
+          iframe {
+            width: 100%;
+          }
         }
-        h2,
-        .email {
-          font-weight: 700;
-        }
-        .email {
-          margin-top: 60px;
-        }
-      }
-      .mapBox {
       }
     }
   }

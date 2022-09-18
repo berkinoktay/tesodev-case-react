@@ -13,6 +13,7 @@ const SortButton: React.FC<ISortButton> = (props) => {
     const [selectedItem, setSelectedItem] = useState<ISortItem>({ label: '', value: '' });
     const [isOpen, setIsOpen] = useState(false);
 
+    const currentFilter = items.find((item) => item.value === searchParams.get('sort'));
     useEffect(() => {
         function handleClickOutSide(e: any) {
             if (isOpen && ref.current && !ref.current.contains(e.target)) {
@@ -31,18 +32,15 @@ const SortButton: React.FC<ISortButton> = (props) => {
         if (!!selectedItem.value) {
             searchParams.set('sort', selectedItem.value)
             setSearchParams(searchParams)
-        } else if (searchParams.has('sort')) {
-            searchParams.delete('sort')
-            setSearchParams(searchParams)
         }
-    }, [selectedItem])
+    }, [selectedItem, searchParams, setSearchParams])
     const handleClick = (item: ISortItem) => {
         setSelectedItem({ label: item.label, value: item.value })
         setIsOpen(false);
     }
     return (
         <div ref={ref} className={styles.sortSection}>
-            <button onClick={() => setIsOpen(prev => !prev)}><img src={SortIcon} width={22} height={20} alt="Sort Icon" /> <div className={styles.title}>{!!selectedItem.label ? selectedItem.label : title}</div></button>
+            <button onClick={() => setIsOpen(prev => !prev)}><img src={SortIcon} width={22} height={20} alt="Sort Icon" /> <div className={styles.title}>{!!currentFilter ? currentFilter.label : title}</div></button>
             <div className={`${styles.dropdown} ${isOpen ? styles.open : ''}`}>
                 {items.map((item, index) => <div key={index} className={`${styles.dropdownItem} ${selectedItem.value === item.value ? styles.active : ''}`} onClick={() => handleClick(item)}>{item.label}</div>)}
 

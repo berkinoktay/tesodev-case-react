@@ -1,25 +1,67 @@
+@import 'styles/_colors.scss';
 .header {
   display: flex;
   align-items: center;
   gap: 103px;
   padding-top: 4rem;
   padding-bottom: 4rem;
+  @media screen and (max-width: 992px) {
+    flex-direction: column;
+    gap: 40px;
+    align-items: unset;
+  }
   .logoSection {
     flex: 1;
     display: flex;
     align-items: center;
     gap: 35px;
+    @media screen and (max-width: 992px) {
+      order: 2;
+    }
+    @media screen and (max-width: 576px) {
+      flex-direction: column;
+      align-items: unset;
+    }
+    > a {
+      @media screen and (max-width: 992px) {
+        align-self: center;
+      }
+    }
     .logo {
-      width: 150px;
-      height: 63px;
+      width: 100%;
+      height: auto;
+      max-width: 150px;
       position: relative;
       display: block;
     }
+    .returnLink {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 700;
+      font-size: 1.5rem;
+      line-height: 1.75rem;
+      color: $secondary-color;
+    }
+    .searchSection {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      @media screen and (max-width: 576px) {
+        flex-direction: column;
+        align-items: unset;
+      }
+      button {
+        @media screen and (max-width: 576px) {
+          margin-left: unset;
+        }
+      }
+    }
   }
-  .searchSection {
-    flex: 1;
-    display: flex;
-    align-items: center;
-    gap: 24px;
+  .addButton {
+    @media screen and (max-width: 992px) {
+      order: 1;
+    }
   }
 }

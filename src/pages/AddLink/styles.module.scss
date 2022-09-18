@@ -1,0 +1,61 @@
+@import 'styles/_colors.scss';
+.form {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  margin-left: 180px;
+  max-width: calc(100% - 300px);
+  gap: 38px;
+  @media screen and (max-width: 992px) {
+    margin: 0;
+    max-width: 100%;
+    padding: 20px 0;
+  }
+  label {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    &.errorBox {
+      span {
+        color: rgba($text-error, 0.5);
+      }
+      .inputBox {
+        border: 2px solid $text-error !important;
+        background-color: transparent !important;
+        input {
+          &::placeholder {
+            color: rgba($text-error, 0.5);
+          }
+        }
+
+        // &:focus-within {
+        //   border-color: $text-error !important;
+        //   background-color: transparent;
+        // }
+      }
+    }
+    span {
+      font-weight: 700;
+      font-size: 18px;
+      line-height: 21px;
+      color: $text-label;
+    }
+    .error {
+      color: rgba($text-error, 0.5);
+      font-weight: 700;
+      font-size: 18px;
+      line-height: 21px;
+    }
+    .inputBox {
+      &:focus-within {
+        background-color: rgba(100, 100, 100, 0.08) !important;
+        border: 2px solid rgba(72, 72, 72, 0.6);
+      }
+    }
+  }
+}
+.toast {
+  position: absolute;
+  right: 17px;
+  bottom: 24px;
+}

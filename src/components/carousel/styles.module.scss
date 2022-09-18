@@ -11,7 +11,7 @@
       z-index: 1;
       top: 50%;
       width: 48px;
-      height: 48px;
+      aspect-ratio: 1;
       border-radius: 24px;
       background-color: #eeeeee;
       outline: none;
@@ -20,9 +20,24 @@
       display: flex;
       align-items: center;
       justify-content: center;
+      @media screen and (max-width: 992px) {
+        top: -60px;
+        width: 34px;
+      }
+      svg {
+        @media screen and (max-width: 992px) {
+          width: 10px;
+          aspect-ratio: 1;
+        }
+      }
       &.arrowLeft {
         transform: translate(-100%, -50%);
         left: -24px;
+        @media screen and (max-width: 992px) {
+          right: 40px;
+          left: unset;
+          transform: unset;
+        }
         svg {
           transform: rotate(180deg);
         }
@@ -30,6 +45,10 @@
       &.arrowRight {
         transform: translate(100%, -50%);
         right: -24px;
+        @media screen and (max-width: 992px) {
+          transform: unset;
+          right: 0;
+        }
       }
     }
 

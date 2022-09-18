@@ -1,11 +1,22 @@
 .mainSection {
   display: flex;
   gap: 18px;
+  @media screen and (max-width: 992px) {
+    flex-direction: column;
+  }
   .listSide {
     flex: 1;
     margin-left: 150px;
+    @media screen and (max-width: 992px) {
+      margin-left: 0;
+      order: 2;
+    }
   }
   .filterSide {
     min-width: 300px;
+    @media screen and (max-width: 992px) {
+      min-width: unset;
+      order: 1;
+    }
   }
 }
